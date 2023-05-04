@@ -1,18 +1,20 @@
 package com.ruoyi.common.core.domain.entity;
 
-import java.util.ArrayList;
-import java.util.List;
+import com.ruoyi.common.annotation.Excel;
+import com.ruoyi.common.core.domain.BaseEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import com.ruoyi.common.core.domain.BaseEntity;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 部门表 sys_dept
- * 
+ *
  * @author ruoyi
  */
 public class SysDept extends BaseEntity
@@ -21,6 +23,10 @@ public class SysDept extends BaseEntity
 
     /** 部门ID */
     private Long deptId;
+
+    /** 租户ID */
+    @Excel(name = "租户序号", cellType = Excel.ColumnType.NUMERIC)
+    private Long tenantId;
 
     /** 父部门ID */
     private Long parentId;
@@ -51,7 +57,7 @@ public class SysDept extends BaseEntity
 
     /** 父部门名称 */
     private String parentName;
-    
+
     /** 子部门 */
     private List<SysDept> children = new ArrayList<SysDept>();
 
@@ -181,10 +187,19 @@ public class SysDept extends BaseEntity
         this.children = children;
     }
 
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("deptId", getDeptId())
+            .append("tenantId", getTenantId())
             .append("parentId", getParentId())
             .append("ancestors", getAncestors())
             .append("deptName", getDeptName())

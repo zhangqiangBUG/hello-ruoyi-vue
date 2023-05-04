@@ -1,8 +1,5 @@
 package com.ruoyi.framework.manager.factory;
 
-import java.util.TimerTask;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.utils.LogUtils;
 import com.ruoyi.common.utils.ServletUtils;
@@ -15,10 +12,14 @@ import com.ruoyi.system.domain.SysOperLog;
 import com.ruoyi.system.service.ISysLogininforService;
 import com.ruoyi.system.service.ISysOperLogService;
 import eu.bitwalker.useragentutils.UserAgent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.TimerTask;
 
 /**
  * 异步工厂（产生任务用）
- * 
+ *
  * @author ruoyi
  */
 public class AsyncFactory
@@ -27,14 +28,15 @@ public class AsyncFactory
 
     /**
      * 记录登录信息
-     * 
+     *
      * @param username 用户名
+     * @param tenantId 租户ID
      * @param status 状态
      * @param message 消息
      * @param args 列表
      * @return 任务task
      */
-    public static TimerTask recordLogininfor(final String username, final String status, final String message,
+    public static TimerTask recordLogininfor(final String username,final Long tenantId, final String status, final String message,
             final Object... args)
     {
         final UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));
@@ -65,6 +67,9 @@ public class AsyncFactory
                 logininfor.setBrowser(browser);
                 logininfor.setOs(os);
                 logininfor.setMsg(message);
+                logininfor.setTenantId((long)1);
+                if(tenantId!=null)logininfor.setTenantId(tenantId);
+
                 // 日志状态
                 if (StringUtils.equalsAny(status, Constants.LOGIN_SUCCESS, Constants.LOGOUT, Constants.REGISTER))
                 {
@@ -82,7 +87,7 @@ public class AsyncFactory
 
     /**
      * 操作日志记录
-     * 
+     *
      * @param operLog 操作日志信息
      * @return 任务task
      */

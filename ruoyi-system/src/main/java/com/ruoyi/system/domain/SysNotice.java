@@ -1,15 +1,17 @@
 package com.ruoyi.system.domain;
 
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Size;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.core.domain.BaseEntity;
 import com.ruoyi.common.xss.Xss;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 /**
  * 通知公告表 sys_notice
- * 
+ *
  * @author ruoyi
  */
 public class SysNotice extends BaseEntity
@@ -18,6 +20,10 @@ public class SysNotice extends BaseEntity
 
     /** 公告ID */
     private Long noticeId;
+
+    /** 租户ID */
+    @Excel(name = "租户序号", cellType = Excel.ColumnType.NUMERIC)
+    private Long tenantId;
 
     /** 公告标题 */
     private String noticeTitle;
@@ -84,10 +90,19 @@ public class SysNotice extends BaseEntity
         return status;
     }
 
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
+    }
+
     @Override
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("noticeId", getNoticeId())
+            .append("tenantId", getTenantId())
             .append("noticeTitle", getNoticeTitle())
             .append("noticeType", getNoticeType())
             .append("noticeContent", getNoticeContent())

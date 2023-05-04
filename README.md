@@ -1,3 +1,23 @@
+# hello-ruoyi-vue
+
+#### 介绍
+在若依开源前后端分离版的基础上增加租户概念，实现saas平台
+
+
+#### 软件架构
+在若依权限管理系统前后端分离版本上增加扩展功能   
+1.nacos
+2.logstash  
+3.扩展为SAAS平台，支持多租户管理
+
+#### 使用说明
+1.克隆本项目  
+2.执行init_sys.sql到mysql数据库  
+3.修改application-druid.yml里的数据库配置，改为你自己的  
+4.idea启动工程  
+
+
+
 <p align="center">
 	<img alt="logo" src="https://oscimg.oschina.net/oscnet/up-d3d0a9303e11d522a06cd263f3079027715.png">
 </p>

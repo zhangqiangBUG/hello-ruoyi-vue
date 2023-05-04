@@ -1,18 +1,19 @@
 package com.ruoyi.common.core.domain.entity;
 
-import java.util.Set;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 import com.ruoyi.common.annotation.Excel;
 import com.ruoyi.common.annotation.Excel.ColumnType;
 import com.ruoyi.common.core.domain.BaseEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import java.util.Set;
 
 /**
  * 角色表 sys_role
- * 
+ *
  * @author ruoyi
  */
 public class SysRole extends BaseEntity
@@ -22,6 +23,10 @@ public class SysRole extends BaseEntity
     /** 角色ID */
     @Excel(name = "角色序号", cellType = ColumnType.NUMERIC)
     private Long roleId;
+
+    /** 租户ID */
+    @Excel(name = "租户序号", cellType = ColumnType.NUMERIC)
+    private Long tenantId;
 
     /** 角色名称 */
     @Excel(name = "角色名称")
@@ -82,6 +87,14 @@ public class SysRole extends BaseEntity
     public void setRoleId(Long roleId)
     {
         this.roleId = roleId;
+    }
+
+    public Long getTenantId() {
+        return tenantId;
+    }
+
+    public void setTenantId(Long tenantId) {
+        this.tenantId = tenantId;
     }
 
     public boolean isAdmin()
@@ -223,6 +236,7 @@ public class SysRole extends BaseEntity
     public String toString() {
         return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
             .append("roleId", getRoleId())
+            .append("tenantId", getTenantId())
             .append("roleName", getRoleName())
             .append("roleKey", getRoleKey())
             .append("roleSort", getRoleSort())

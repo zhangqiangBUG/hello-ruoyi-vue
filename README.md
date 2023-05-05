@@ -1,7 +1,7 @@
 # hello-ruoyi-vue
 
 #### 介绍
-在若依开源前后端分离版的基础上增加租户概念，实现saas平台
+在若依开源前后端分离版([前后端未分离版本](https://gitee.com/xiaoqiangBUG/hello-ruoyi-saas))的基础上增加租户概念，实现saas平台
 
 
 #### 软件架构

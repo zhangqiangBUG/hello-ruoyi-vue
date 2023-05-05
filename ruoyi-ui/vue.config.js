@@ -14,6 +14,9 @@ const port = process.env.port || process.env.npm_config_port || 80 // 端口
 // 基础路由（二级路由）
 const BASE_ROUTE = '/ruoyi-vue'
 
+// 开发过程的接口地址
+const SERVER_URL = 'http://localhost:8080'
+
 // vue.config.js 配置说明
 //官方vue.config.js 参考文档 https://cli.vuejs.org/zh/config/#css-loaderoptions
 // 这里只列一部分，具体配置参考文档
@@ -38,7 +41,7 @@ module.exports = {
     proxy: {
       // detail: https://cli.vuejs.org/config/#devserver-proxy
       [process.env.VUE_APP_BASE_API]: {
-        target: `http://localhost:8080`,
+        target: `${SERVER_URL}`,
         changeOrigin: true,
         pathRewrite: {
           ['^' + process.env.VUE_APP_BASE_API]: ''

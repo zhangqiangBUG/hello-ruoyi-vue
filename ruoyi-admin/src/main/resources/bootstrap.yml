@@ -1,0 +1,21 @@
+# Tomcat
+server:
+  port: 8080
+
+# Spring
+spring:
+  application:
+    # 应用名称
+    name: hello-ruoyi-vue
+  profiles:
+    # 环境配置
+    active: dev
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  cloud:
+    nacos:
+      config:
+        shared-configs:
+          - dataid: pai-share-config-${spring.profiles.active}.yaml
+            refresh: true

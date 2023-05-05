@@ -101,7 +101,7 @@
       <el-table-column label="昵称" align="center" prop="tenantNickname" />
       <el-table-column label="邮箱" align="center" prop="email" />
       <el-table-column label="手机号码" align="center" prop="phonenumber" />
-      <el-table-column label="状态" align="center" prop="status" />
+<!--      <el-table-column label="状态" align="center" prop="status" />-->
       <el-table-column label="操作" align="center" class-name="small-padding fixed-width">
         <template slot-scope="scope">
           <el-button
